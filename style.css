@@ -64,7 +64,6 @@ section { padding: 5rem 0; }
 
 /* 团队介绍 */
 .team-section { background-color: white; }
-/* --- 关键修改在这里 --- */
 .team-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 强制设为3列 */
@@ -78,22 +77,57 @@ section { padding: 5rem 0; }
 .activity-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .activity-cards .icon { font-size: 3rem; margin-bottom: 1.5rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-/* 加入我们表单 */
+/* --- 关键修改：修复加入我们表单样式 --- */
 .join-section { background-color: white; }
-.join-form { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
-.form-row { display: flex; gap: 1.5rem; }
-.form-row > * { flex: 1; }
-.join-form input, .join-form select, .join-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
-.join-form input:focus, .join-form select:focus, .join-form textarea:focus { outline: none; border-color: #b8c0ff; box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.3); }
+.join-form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* 确保子元素可以拉伸 */
+    align-items: stretch;
+}
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+.form-row > * {
+    flex: 1; /* 让每个输入框平分空间 */
+}
+.join-form input, .join-form select, .join-form textarea {
+    width: 100%; /* 确保输入框填满其容器 */
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.join-form input:focus, .join-form select:focus, .join-form textarea:focus {
+    outline: none;
+    border-color: #b8c0ff;
+    box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.3);
+}
 textarea { resize: vertical; min-height: 120px; }
 .submit-btn { padding: 1rem 2rem; border: none; border-radius: 8px; background: var(--primary-gradient); color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
 .submit-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
 .submit-btn:active { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
 
-/* 页脚 */
-.footer { background: var(--primary-gradient); color: rgba(255, 255, 255, 0.9); padding: 4rem 0; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.footer-col { text-align: center; }
+/* --- 关键修改：修复页脚样式 --- */
+.footer {
+    background: var(--primary-gradient);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 4rem 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 强制分为3列 */
+    gap: 2rem;
+}
+.footer-col {
+    text-align: center; /* 内部文字居中 */
+}
 .footer-col h3 { color: white; margin-bottom: 1.5rem; }
 .footer-col p { margin: 0.5rem 0; display: flex; align-items: center; gap: 10px; justify-content: center; }
 .footer-col i { font-size: 1.2rem; width: 20px; }
@@ -103,21 +137,16 @@ textarea { resize: vertical; min-height: 120px; }
 
 /* 响应式设计 */
 @media (max-width: 992px) {
-    /* 在平板等中等屏幕上，显示为2列 */
-    .team-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .team-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-    body { padding-top: 70px; } h2 { font-size: 2rem; }
+    body { padding-top: 70px; }
+    h2 { font-size: 2rem; }
     .navbar .logo span { display: none; }
     .navbar .container { justify-content: center; }
     .form-row { flex-direction: column; }
+    /* 在小屏幕上，页脚和团队卡片都变为单列 */
     .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-    
-    /* 在手机等小屏幕上，显示为1列 */
-    .team-cards {
-        grid-template-columns: 1fr;
-    }
+    .team-cards { grid-template-columns: 1fr; }
 }
