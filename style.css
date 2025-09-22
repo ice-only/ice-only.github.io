@@ -22,7 +22,10 @@ main { flex-grow: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
-h2 { font-size: 2.5rem; margin-bottom: 4rem; }
+
+/* ================== 关键修改：调整标题间距 ================== */
+h2 { font-size: 2.5rem; margin-bottom: 1.5rem; } /* 减小标题下方的间距 */
+
 section { padding: 5rem 0; }
 
 /* Live2D看板娘样式 */
@@ -70,34 +73,15 @@ section { padding: 5rem 0; }
 .team-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
 .team-cards .card h3 { margin-bottom: 0.5rem; font-size: 1.4rem; color: #34495e; }
-.team-cards .card p { color: #8e4ad; font-weight: 500; }
+.team-cards .card p { color: #8e44ad; font-weight: 500; }
 .activity-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .activity-cards .icon { font-size: 3rem; margin-bottom: 1.5rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-/* ================== 加入我们 (二维码版本) 的样式 (已修正) ================== */
+/* 加入我们 (二维码版本) 的样式 */
 .join-section {
     background-color: white;
 }
-.join-subtitle {
-    font-size: 1.1rem;
-    color: var(--light-text-color);
-    margin-bottom: 3rem;
-}
-/* 新增：用于居中的容器样式 */
-.join-us-content {
-    display: flex; /* 启用flex布局 */
-    flex-direction: column; /* 让内部元素垂直排列 */
-    align-items: center; /* 核心：让所有子元素水平居中 */
-    gap: 2rem; /* 在二维码和群号之间添加一些间距 */
-}
-.qr-code-image {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    /* margin-bottom is no longer needed */
-}
+/* ================== 关键修改：调整各元素间距 ================== */
 .group-number {
     font-size: 1.5rem;
     font-weight: 600;
@@ -108,6 +92,24 @@ section { padding: 5rem 0; }
     background-color: #f0f2f5;
     padding: 0.8rem 1.5rem;
     border-radius: 12px;
+    margin-bottom: 1rem; /* 与下方副标题的间距 */
+}
+.join-subtitle {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    margin-bottom: 3rem; /* 与下方二维码的间距 */
+}
+.join-us-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.qr-code-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
 }
 /* ====================================================================== */
 
@@ -123,7 +125,8 @@ section { padding: 5rem 0; }
 /* 响应式设计 */
 @media (max-width: 992px) { .team-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
-    body { padding-top: 70px; } h2 { font-size: 2rem; }
+    body { padding-top: 70px; } 
+    h2 { font-size: 2rem; margin-bottom: 1rem;}
     .navbar .logo span { display: none; }
     .navbar .container { justify-content: center; }
     .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
