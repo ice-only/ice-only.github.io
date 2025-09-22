@@ -77,39 +77,22 @@
             </div>
         </section>
 
-        <!-- 加入我们 -->
+        <!-- ================== 关键修改：加入我们 (二维码版本) ================== -->
         <section id="join" class="join-section">
             <div class="container text-center">
                 <h2>加入我们</h2>
-                <p>填写以下信息，加入泉信ACM算法社</p>
-                <!-- ================== 关键修改在这里 ================== -->
-                <form class="join-form card"
-                      action="https://formspree.io/f/xyzngnzj" <!-- 您的专属地址 -->
-                      method="POST">
-                <!-- ======================================================= -->
-                    <div class="form-row">
-                        <input type="text" name="姓名" placeholder="姓名" required>
-                        <input type="email" name="邮箱" placeholder="邮箱" required>
-                    </div>
-                    <div class="form-row">
-                        <input type="tel" name="QQ" placeholder="QQ" required>
-                        <select name="感兴趣的领域" required>
-                            <option value="" disabled selected>选择感兴趣的领域</option>
-                            <option value="算法竞赛">算法竞赛</option>
-                            <option value="前端开发">前端开发</option>
-                            <option value="后端开发">后端开发</option>
-                            <option value="网络安全">网络安全</option>
-                        </select>
-                    </div>
-                    <div class="form-row">
-                        <input type="text" name="学院" placeholder="学院" required>
-                        <input type="text" name="专业" placeholder="专业" required>
-                    </div>
-                    <textarea name="自我介绍" placeholder="请简单介绍一下自己和对计算机的兴趣..." required></textarea>
-                    <button type="submit" class="submit-btn">提交申请</button>
-                </form>
+                <p class="join-subtitle">扫一扫下方的二维码，或搜索群号，加入我们的QQ交流群</p>
+
+                <!-- 显示二维码图片 -->
+                <img src="images/qq-group-qrcode.png" alt="ACM算法社纳新群二维码" class="qr-code-image">
+
+                <!-- 显示群号 -->
+                <p class="group-number">
+                    <i class="fab fa-qq"></i> QQ群号：1042613770
+                </p>
             </div>
         </section>
+        <!-- ====================================================================== -->
     </main>
 
     <!-- 页脚 -->
