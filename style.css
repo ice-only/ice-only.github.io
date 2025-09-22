@@ -10,31 +10,16 @@
     scroll-behavior: smooth; /* 全局平滑滚动 */
 }
 
-/* --- 关键修改：解决页脚问题 (Sticky Footer) --- */
-html {
-    height: 100%;
-}
+/* 解决页脚问题 (Sticky Footer) */
+html { height: 100%; }
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+    display: flex; flex-direction: column; min-height: 100%;
     font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
-    margin: 0;
-    padding-top: 80px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.7;
-    box-sizing: border-box;
+    margin: 0; padding-top: 80px; background-color: var(--background-color);
+    color: var(--text-color); line-height: 1.7; box-sizing: border-box;
 }
-main {
-    flex-grow: 1; /* 让 main 内容区域自动伸展，把 footer 推到底部 */
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+main { flex-grow: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 h2 { font-size: 2.5rem; margin-bottom: 4rem; }
@@ -60,7 +45,7 @@ section { padding: 5rem 0; }
 .hero { padding: 6rem 0; }
 .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; color: #2c3e50; }
 .hero p { font-size: 1.1rem; max-width: 650px; margin: 0 auto 1.5rem; color: var(--light-text-color); }
-#hitokoto_text { font-style: italic; color: #95a5a6; min-height: 1.2em; /* 防止加载时跳动 */ margin-bottom: 3rem;}
+#hitokoto_text { font-style: italic; color: #95a5a6; min-height: 1.2em; margin-bottom: 3rem;}
 .stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
 .stat-item { text-align: center; padding: 1.5rem; flex: 1; min-width: 150px;}
 .stat-number { display: block; font-size: 3rem; font-weight: bold; color: #f8a5c2; }
@@ -72,14 +57,9 @@ section { padding: 5rem 0; }
     box-shadow: var(--card-shadow); padding: 2.5rem;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
-    /* --- 新增：为JS动画准备的初始状态 --- */
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0; transform: translateY(30px);
 }
-.card.visible { /* JS会添加这个class来触发动画 */
-    opacity: 1;
-    transform: translateY(0);
-}
+.card.visible { opacity: 1; transform: translateY(0); }
 .card:hover { transform: translateY(-10px) !important; box-shadow: 0 20px 40px rgba(41, 51, 61, 0.12); }
 
 /* 团队介绍 */
@@ -98,29 +78,4 @@ section { padding: 5rem 0; }
 .join-form { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
 .form-row { display: flex; gap: 1.5rem; }
 .form-row > * { flex: 1; }
-.join-form input, .join-form select, .join-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
-.join-form input:focus, .join-form select:focus, .join-form textarea:focus { outline: none; border-color: #b8c0ff; box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.3); }
-textarea { resize: vertical; min-height: 120px; }
-.submit-btn { padding: 1rem 2rem; border: none; border-radius: 8px; background: var(--primary-gradient); color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
-.submit-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
-.submit-btn:active { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
-
-/* 页脚 */
-.footer { background: var(--primary-gradient); color: rgba(255, 255, 255, 0.9); padding: 4rem 0; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.footer-col { text-align: center; }
-.footer-col h3 { color: white; margin-bottom: 1.5rem; }
-.footer-col p { margin: 0.5rem 0; display: flex; align-items: center; gap: 10px; justify-content: center; }
-.footer-col i { font-size: 1.2rem; width: 20px; }
-.social-icons { display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; }
-.social-icons a { font-size: 1.5rem; transition: transform 0.3s; color: white; }
-.social-icons a:hover { transform: scale(1.2); }
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    body { padding-top: 70px; } h2 { font-size: 2rem; }
-    .navbar .logo span { display: none; }
-    .navbar .container { justify-content: center; }
-    .form-row { flex-direction: column; }
-    .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-}
+.join-fo
