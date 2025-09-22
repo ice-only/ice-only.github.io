@@ -9,8 +9,6 @@
 </head>
 <body>
 
-    <!-- 注意：此处的 <div id="particles-js"></div> 已被移除 -->
-
     <!-- 头部导航栏 -->
     <header class="navbar">
         <div class="container">
@@ -58,7 +56,7 @@
                 <div class="team-cards">
                     <div class="card"><img src="images/avatar1.png" alt="陈凌涵" class="avatar"><h3>陈凌涵</h3><p>社长</p></div>
                     <div class="card"><img src="images/avatar2.png" alt="胡力中" class="avatar"><h3>胡力中</h3><p>副社长</p></div>
-                    <div class="card"><img src="images/avatar3.png" alt="涂晓晖" class="avatar"><h3>涂晓晖</h3><p>副社长</p></div>
+                    <div class="card"><img src="images/avatar3.png" alt="涂晓辉" class="avatar"><h3>涂晓辉</h3><p>副社长</p></div>
                     <div class="card"><img src="images/avatar4.png" alt="杨幸媛" class="avatar"><h3>杨幸媛</h3><p>副社长</p></div>
                     <div class="card"><img src="images/avatar5.png" alt="唐崇泽" class="avatar"><h3>唐崇泽</h3><p>副社长</p></div>
                     <div class="card"><img src="images/avatar6.png" alt="叶晨杰" class="avatar"><h3>叶晨杰</h3><p>副社长</p></div>
@@ -84,11 +82,30 @@
             <div class="container text-center">
                 <h2>加入我们</h2>
                 <p>填写以下信息，加入泉信ACM算法社</p>
-                <form class="join-form card">
-                    <div class="form-row"><input type="text" placeholder="姓名" required><input type="email" placeholder="邮箱" required></div>
-                    <div class="form-row"><input type="tel" placeholder="电话" required><select required><option value="" disabled selected>选择感兴趣的领域</option><option>算法竞赛</option><option>前端开发</option><option>后端开发</option><option>网络安全</option></select></div>
-                    <div class="form-row"><input type="text" placeholder="年级" required><input type="text" placeholder="专业" required></div>
-                    <textarea placeholder="请简单介绍一下自己和对计算机的兴趣..." required></textarea>
+                <!-- ================== 关键修改在这里 ================== -->
+                <form class="join-form card"
+                      action="https://formspree.io/f/xyzngnzj" <!-- 您的专属地址 -->
+                      method="POST">
+                <!-- ======================================================= -->
+                    <div class="form-row">
+                        <input type="text" name="姓名" placeholder="姓名" required>
+                        <input type="email" name="邮箱" placeholder="邮箱" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" name="电话" placeholder="电话" required>
+                        <select name="感兴趣的领域" required>
+                            <option value="" disabled selected>选择感兴趣的领域</option>
+                            <option value="算法竞赛">算法竞赛</option>
+                            <option value="前端开发">前端开发</option>
+                            <option value="后端开发">后端开发</option>
+                            <option value="网络安全">网络安全</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="年级" placeholder="年级" required>
+                        <input type="text" name="专业" placeholder="专业" required>
+                    </div>
+                    <textarea name="自我介绍" placeholder="请简单介绍一下自己和对计算机的兴趣..." required></textarea>
                     <button type="submit" class="submit-btn">提交申请</button>
                 </form>
             </div>
@@ -104,21 +121,10 @@
         </div>
     </footer>
     
-    <!-- Live2D看板娘容器 -->
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
-
-    <!-- 引入自己的 JS -->
     <script src="script.js"></script>
-    
-    <!-- 注意：此处的 particles.js 库已被移除 -->
-    <!-- 保留 Live2D 的库 -->
     <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/live2d.min.js"></script>
-
-    <!-- 初始化代码 -->
     <script type="text/javascript">
-        // 注意：此处的 particlesJS.load(...) 已被移除
-
-        // 初始化 Live2D 模型
         live2d_settings['model'] = {
             jsonPath: 'https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget-models/wanko/wanko.model.json'
         };
