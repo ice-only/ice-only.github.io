@@ -2,28 +2,45 @@
 :root {
     --primary-gradient: linear-gradient(135deg, #f8a5c2, #b8c0ff);
     --card-shadow: 0 10px 30px rgba(41, 51, 61, 0.08);
-    --background-color: #f9faff;
     --text-color: #555;
     --heading-color: #333;
-    --light-text-color: #777;
+    --light-text-color: #ddd; /* 浅色文字改为更亮的颜色以适应深色背景 */
     --border-color: #e9ecef;
-    scroll-behavior: smooth; /* 全局平滑滚动 */
+    scroll-behavior: smooth;
 }
 
 /* 解决页脚问题 (Sticky Footer) */
 html { height: 100%; }
+
+/* ================== 关键修改：应用新的图片背景 ================== */
 body {
+    background: url(https://files.dbnuo.com/wallpaper/wallhaven-p2wg1p.jpg) no-repeat center center fixed !important;
+    background-size: cover !important;
     display: flex; flex-direction: column; min-height: 100%;
-    font-family: 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
-    margin: 0; padding-top: 80px; background-color: var(--background-color);
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+    margin: 0; padding-top: 80px;
     color: var(--text-color); line-height: 1.7; box-sizing: border-box;
 }
+
 main { flex-grow: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 h2 { font-size: 2.5rem; margin-bottom: 4rem; }
 section { padding: 5rem 0; }
+
+/* 注意：此处的 #particles-js 样式已被移除 */
+
+/* Live2D看板娘样式 */
+.live2d {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    height: 250px;
+    z-index: 100;
+    pointer-events: none;
+}
 
 /* 导航栏 */
 .navbar {
@@ -36,26 +53,35 @@ section { padding: 5rem 0; }
 }
 .navbar .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
 .navbar .logo { display: flex; align-items: center; text-decoration: none; color: #333; font-size: 1.2rem; font-weight: bold; }
-.navbar .logo img { height: 40px; margin-right: 10px; }
 .navbar nav { display: flex; gap: 1rem; }
 .navbar .nav-link { color: #555; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.3s; }
 .navbar .nav-link:hover, .navbar .nav-link.active { color: white; background: var(--primary-gradient); transform: translateY(-2px); }
 
-/* 欢迎区 & 一言 */
+/* 欢迎区 & 一言 (优化文字可读性) */
 .hero { padding: 6rem 0; }
-.hero h1 { font-size: 3.2rem; margin-bottom: 1rem; color: #2c3e50; }
-.hero p { font-size: 1.1rem; max-width: 650px; margin: 0 auto 1.5rem; color: var(--light-text-color); }
-#hitokoto_text { font-style: italic; color: #95a5a6; min-height: 1.2em; margin-bottom: 3rem;}
+.hero h1 {
+    font-size: 3.2rem; margin-bottom: 1rem; color: #fff; /* 文字改白色 */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+}
+.hero p {
+    font-size: 1.1rem; max-width: 650px; margin: 0 auto 1.5rem; color: var(--light-text-color);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+}
+#hitokoto_text {
+    font-style: italic; color: #eee; min-height: 1.2em; margin-bottom: 3rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+}
 .stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
 .stat-item { text-align: center; padding: 1.5rem; flex: 1; min-width: 150px;}
 .stat-number { display: block; font-size: 3rem; font-weight: bold; color: #f8a5c2; }
-.stat-label { font-size: 1rem; color: var(--light-text-color); }
+.stat-label { font-size: 1rem; color: var(--text-color); }
 
 /* 卡片 & JS滚动动画样式 */
 .card {
-    background: white; border-radius: 16px;
-    box-shadow: var(--card-shadow); padding: 2.5rem;
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.9); /* 卡片稍微透明一点，更有质感 */
+    backdrop-filter: blur(2px);
+    border-radius: 16px; box-shadow: var(--card-shadow); padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
     opacity: 0; transform: translateY(30px);
 }
@@ -63,12 +89,10 @@ section { padding: 5rem 0; }
 .card:hover { transform: translateY(-10px) !important; box-shadow: 0 20px 40px rgba(41, 51, 61, 0.12); }
 
 /* 团队介绍 */
-.team-section { background-color: white; }
-.team-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 强制设为3列 */
-    gap: 2rem;
+.team-section, .activities-section, .join-section {
+    background-color: transparent; /* 让section透明，完全展示背景 */
 }
+.team-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
 .team-cards .card h3 { margin-bottom: 0.5rem; font-size: 1.4rem; color: #34495e; }
 .team-cards .card p { color: #8e44ad; font-weight: 500; }
@@ -77,76 +101,31 @@ section { padding: 5rem 0; }
 .activity-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
 .activity-cards .icon { font-size: 3rem; margin-bottom: 1.5rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-/* --- 关键修改：修复加入我们表单样式 --- */
-.join-section { background-color: white; }
-.join-form {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    /* 确保子元素可以拉伸 */
-    align-items: stretch;
-}
-.form-row {
-    display: flex;
-    gap: 1.5rem;
-}
-.form-row > * {
-    flex: 1; /* 让每个输入框平分空间 */
-}
-.join-form input, .join-form select, .join-form textarea {
-    width: 100%; /* 确保输入框填满其容器 */
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    font-size: 1rem;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.join-form input:focus, .join-form select:focus, .join-form textarea:focus {
-    outline: none;
-    border-color: #b8c0ff;
-    box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.3);
-}
+/* 加入我们表单 */
+.join-form { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; align-items: stretch; }
+.form-row { display: flex; gap: 1.5rem; }
+.form-row > * { flex: 1; }
+.join-form input, .join-form select, .join-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
 textarea { resize: vertical; min-height: 120px; }
 .submit-btn { padding: 1rem 2rem; border: none; border-radius: 8px; background: var(--primary-gradient); color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
 .submit-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
-.submit-btn:active { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
 
-/* --- 关键修改：修复页脚样式 --- */
-.footer {
-    background: var(--primary-gradient);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 4rem 0;
-}
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 强制分为3列 */
-    gap: 2rem;
-}
-.footer-col {
-    text-align: center; /* 内部文字居中 */
-}
+/* 页脚 */
+.footer { background: var(--primary-gradient); color: rgba(255, 255, 255, 0.9); padding: 4rem 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.footer-col { text-align: center; }
 .footer-col h3 { color: white; margin-bottom: 1.5rem; }
 .footer-col p { margin: 0.5rem 0; display: flex; align-items: center; gap: 10px; justify-content: center; }
-.footer-col i { font-size: 1.2rem; width: 20px; }
 .social-icons { display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; }
 .social-icons a { font-size: 1.5rem; transition: transform 0.3s; color: white; }
-.social-icons a:hover { transform: scale(1.2); }
 
 /* 响应式设计 */
-@media (max-width: 992px) {
-    .team-cards { grid-template-columns: repeat(2, 1fr); }
-}
-
+@media (max-width: 992px) { .team-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
-    body { padding-top: 70px; }
-    h2 { font-size: 2rem; }
+    body { padding-top: 70px; } h2 { font-size: 2rem; }
     .navbar .logo span { display: none; }
     .navbar .container { justify-content: center; }
     .form-row { flex-direction: column; }
-    /* 在小屏幕上，页脚和团队卡片都变为单列 */
     .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
     .team-cards { grid-template-columns: 1fr; }
 }
