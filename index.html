@@ -14,11 +14,11 @@
     <header class="navbar">
         <div class="container">
             <a href="#" class="logo">
-                <img src="images/logo.png" alt="Logo"> <!-- 替换成你的Logo图片 -->
+                <!-- <img src="images/logo.png" alt="Logo"> --> <!-- 如果有Logo，取消这行注释 -->
                 <span>福工商-计算机协会</span>
             </a>
             <nav>
-                <a href="#home" class="nav-link active">首页</a>
+                <a href="#home" class="nav-link">首页</a>
                 <a href="#team" class="nav-link">团队介绍</a>
                 <a href="#activities" class="nav-link">特色活动</a>
                 <a href="#join" class="nav-link">加入我们</a>
@@ -33,16 +33,18 @@
             <div class="container text-center">
                 <h1>欢迎加入福州工商学院计算机协会</h1>
                 <p>我们致力于计算机学习、交流和创新。无论你是想参与算法竞赛，电子设计还是单纯的计算机爱好者，这里都是你的最佳选择！</p>
+                <!-- 新增：用于显示“一言”的容器 -->
+                <p id="hitokoto_text"><i>正在获取一言...</i></p>
                 <div class="stats">
-                    <div class="stat-item">
+                    <div class="stat-item card">
                         <span class="stat-number">300+</span>
                         <span class="stat-label">会员</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item card">
                         <span class="stat-number">10+</span>
                         <span class="stat-label">竞赛奖项</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item card">
                         <span class="stat-number">5+</span>
                         <span class="stat-label">社团活动</span>
                     </div>
@@ -56,17 +58,17 @@
                 <h2>我们的团队</h2>
                 <div class="team-cards">
                     <div class="card">
-                        <img src="images/avatar1.png" alt="余延聪" class="avatar"> <!-- 替换成成员头像 -->
+                        <img src="images/avatar1.png" alt="余延聪" class="avatar">
                         <h3>余延聪</h3>
                         <p>会长</p>
                     </div>
                     <div class="card">
-                        <img src="images/avatar2.png" alt="庄文渊" class="avatar"> <!-- 替换成成员头像 -->
+                        <img src="images/avatar2.png" alt="庄文渊" class="avatar">
                         <h3>庄文渊</h3>
                         <p>副会长·技术方向</p>
                     </div>
                     <div class="card">
-                        <img src="images/avatar3.png" alt="沈悦" class="avatar"> <!-- 替换成成员头像 -->
+                        <img src="images/avatar3.png" alt="沈悦" class="avatar">
                         <h3>沈悦</h3>
                         <p>副会长·活动策划</p>
                     </div>
@@ -108,15 +110,15 @@
             <div class="container text-center">
                 <h2>加入我们</h2>
                 <p>填写以下信息，加入福工商计协</p>
-                <form class="join-form">
+                <form class="join-form card">
                     <div class="form-row">
-                        <input type="text" placeholder="姓名">
-                        <input type="email" placeholder="邮箱">
+                        <input type="text" placeholder="姓名" required>
+                        <input type="email" placeholder="邮箱" required>
                     </div>
                     <div class="form-row">
-                        <input type="tel" placeholder="电话">
-                        <select>
-                            <option disabled selected>选择感兴趣的领域</option>
+                        <input type="tel" placeholder="电话" required>
+                        <select required>
+                            <option value="" disabled selected>选择感兴趣的领域</option>
                             <option>算法竞赛</option>
                             <option>前端开发</option>
                             <option>后端开发</option>
@@ -124,10 +126,10 @@
                         </select>
                     </div>
                     <div class="form-row">
-                        <input type="text" placeholder="年级">
-                        <input type="text" placeholder="专业">
+                        <input type="text" placeholder="年级" required>
+                        <input type="text" placeholder="专业" required>
                     </div>
-                    <textarea placeholder="请简单介绍一下自己和对计算机的兴趣..."></textarea>
+                    <textarea placeholder="请简单介绍一下自己和对计算机的兴趣..." required></textarea>
                     <button type="submit" class="submit-btn">提交申请</button>
                 </form>
             </div>
@@ -147,9 +149,9 @@
                 <h3>关注我们</h3>
                 <p>获取最新活动通知和技术分享</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fas fa-bell"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fas fa-question-circle"></i></a>
+                    <a href="#" aria-label="通知"><i class="fas fa-bell"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="帮助"><i class="fas fa-question-circle"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -161,5 +163,7 @@
         </div>
     </footer>
 
+    <!-- 关键：引入新的 JavaScript 文件 -->
+    <script src="script.js"></script>
 </body>
 </html>
