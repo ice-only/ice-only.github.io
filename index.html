@@ -3,37 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>福工商-计算机协会</title>
     <link rel="stylesheet" href="style.css">
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <h1>我的网站</h1>
+    <!-- 头部导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Logo"> <!-- 替换成你的Logo图片 -->
+                <span>福工商-计算机协会</span>
+            </a>
+            <nav>
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#team" class="nav-link">团队介绍</a>
+                <a href="#activities" class="nav-link">特色活动</a>
+                <a href="#join" class="nav-link">加入我们</a>
+            </nav>
+        </div>
     </header>
 
+    <!-- 主体内容 -->
     <main>
-        <div class="card-container">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="占位图">
-                <h2>卡片标题一</h2>
-                <p>这里是一些关于卡片内容的描述性文字，可以根据你的需要进行修改。</p>
+        <!-- 欢迎部分 -->
+        <section id="home" class="hero">
+            <div class="container text-center">
+                <h1>欢迎加入福州工商学院计算机协会</h1>
+                <p>我们致力于计算机学习、交流和创新。无论你是想参与算法竞赛，电子设计还是单纯的计算机爱好者，这里都是你的最佳选择！</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">会员</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">竞赛奖项</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">社团活动</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="占位图">
-                <h2>卡片标题二</h2>
-                <p>这里是一些关于卡片内容的描述性文字，可以根据你的需要进行修改。</p>
+        </section>
+
+        <!-- 团队介绍 -->
+        <section id="team" class="team-section">
+            <div class="container text-center">
+                <h2>我们的团队</h2>
+                <div class="team-cards">
+                    <div class="card">
+                        <img src="images/avatar1.png" alt="余延聪" class="avatar"> <!-- 替换成成员头像 -->
+                        <h3>余延聪</h3>
+                        <p>会长</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/avatar2.png" alt="庄文渊" class="avatar"> <!-- 替换成成员头像 -->
+                        <h3>庄文渊</h3>
+                        <p>副会长·技术方向</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/avatar3.png" alt="沈悦" class="avatar"> <!-- 替换成成员头像 -->
+                        <h3>沈悦</h3>
+                        <p>副会长·活动策划</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="占位图">
-                <h2>卡片标题三</h2>
-                <p>这里是一些关于卡片内容的描述性文字，可以根据你的需要进行修改。</p>
+        </section>
+
+        <!-- 特色活动 -->
+        <section id="activities" class="activities-section">
+            <div class="container text-center">
+                <h2>特色活动</h2>
+                <div class="activity-cards">
+                    <div class="card">
+                        <i class="fas fa-code icon"></i>
+                        <h3>编程竞赛</h3>
+                        <p>定期举办编程比赛，提升算法和编程能力，为ACM等大型竞赛做准备</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-desktop icon"></i>
+                        <h3>技术讲座</h3>
+                        <p>由竞赛经验丰富的会长进行技术授课，快速进入算法的世界</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-users icon"></i>
+                        <h3>项目开发</h3>
+                        <p>协会内组队完成实际项目，积累开发经验，打造属于自己的作品</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-robot icon"></i>
+                        <h3>AI探索</h3>
+                        <p>学习人工智能和机器学习，探索最新技术趋势</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- 加入我们 -->
+        <section id="join" class="join-section">
+            <div class="container text-center">
+                <h2>加入我们</h2>
+                <p>填写以下信息，加入福工商计协</p>
+                <form class="join-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="姓名">
+                        <input type="email" placeholder="邮箱">
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" placeholder="电话">
+                        <select>
+                            <option disabled selected>选择感兴趣的领域</option>
+                            <option>算法竞赛</option>
+                            <option>前端开发</option>
+                            <option>后端开发</option>
+                            <option>人工智能</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" placeholder="年级">
+                        <input type="text" placeholder="专业">
+                    </div>
+                    <textarea placeholder="请简单介绍一下自己和对计算机的兴趣..."></textarea>
+                    <button type="submit" class="submit-btn">提交申请</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 你的名字</p>
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>联系我们</h3>
+                <p><i class="fas fa-envelope"></i> wenyuanchuang@outlook.com</p>
+                <p><i class="fas fa-phone"></i> 19959115907</p>
+                <p><i class="fas fa-map-marker-alt"></i> 北区宿舍楼下芝屿坊计算机协会活动室</p>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <p>获取最新活动通知和技术分享</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fas fa-question-circle"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>活动时间</h3>
+                <p><i class="fas fa-calendar-alt"></i> 每周四 18:50-21:30</p>
+                <p><i class="fas fa-laptop-code"></i> 算法课程学习</p>
+                <p><i class="fas fa-calendar-plus"></i> 不定期其他活动</p>
+            </div>
+        </div>
     </footer>
 
 </body>
