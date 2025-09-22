@@ -52,4 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-});
+});```
+
+### **操作提醒**
+
+1.  **替换代码**：请务必将 `index.html` 的代码**完整替换**。
+2.  **上传头像**：你需要在 `images` 文件夹中准备好6张成员的头像图片，并将它们命名为 `avatar1.png`, `avatar2.png`, ..., `avatar6.png`。如果你的图片是其他格式（如 `.jpg`），请记得在 `index.html` 文件中修改对应的图片扩展名。
+3.  **提交并刷新**：提交更改后，等待几分钟让GitHub Pages部署，然后强制刷新你的网页查看最终效果。
