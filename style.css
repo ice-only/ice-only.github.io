@@ -143,6 +143,13 @@ section { padding: 5rem 0; }
     transition: opacity 0.5s ease;
 }
 
+/* ====================================================================== */
+/* ========== (新) 添加这段代码来修复悬停闪动bug ========== */
+/* ====================================================================== */
+#weekly-activities-sidebar:hover {
+    transform: translateY(-50%) !important;
+}
+
 #weekly-activities-sidebar h3 {
     margin-top: 0;
     padding-bottom: 1rem;
