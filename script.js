@@ -55,10 +55,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContentArea = document.getElementById('modal-activities-content');
 
     function openModal() {
-        const contentToClone = sidebarContent.cloneNode(true);
-        modalContentArea.innerHTML = '';
-        modalContentArea.appendChild(contentToClone);
-        modalOverlay.classList.add('visible');
+        if (sidebarContent && modalContentArea) {
+            const contentToClone = sidebarContent.cloneNode(true);
+            modalContentArea.innerHTML = '';
+            modalContentArea.appendChild(contentToClone);
+            modalOverlay.classList.add('visible');
+        }
     }
 
-    fu
+    function closeModal() {
+        if (modalOverlay) {
+            modalOverlay.classList.remove('visible');
+        }
+    }
+    
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('visible')) {
+            closeModal();
+        }
+    });
+
+    // ======================================================================
+    // ========== 功能五：侧边栏伸缩功能 (这是关键代码！) ==========
+    // ======================================================================
+    const sidebar = document.getElementById('weekly-activities-sidebar');
+    const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+
+    if (sidebar && toggleSidebarBtn) {
+        toggleSidebarBtn.addEventListener('click', function() {
+            // 核心功能：切换 'collapsed' CSS 类
+            sidebar.classList.toggle('collapsed');
+        });
+    }
+
+});
