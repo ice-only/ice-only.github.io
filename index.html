@@ -2,20 +2,29 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
     <title>泉信ACM算法社</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
+    <!-- ====================================================================== -->
+    <!-- ========== 侧边栏结构已更新，添加了头部和切换按钮 ========== -->
+    <!-- ====================================================================== -->
     <aside id="weekly-activities-sidebar" class="card">
-        <h3>本周活动</h3>
+        <div class="sidebar-header">
+            <h3>本周活动</h3>
+            <button id="toggle-sidebar-btn" aria-label="收起侧边栏">
+                <i class="fas fa-chevron-left"></i> <!-- 展开时显示的图标 -->
+                <i class="fas fa-chevron-right"></i> <!-- 收起时显示的图标 -->
+            </button>
+        </div>
         <div class="sidebar-content">
                 <ul>
-                    <li>周一：算法分享会</li>
-                    <li>周三：团队项目开发</li>
-                    <li>周五：自由刷题交流</li>
+                    <li>周日:下午12：00-17：00周赛</li>
+                    <li>周赛地址位于sa604</li>
+                    <li></li>
                 </ul>
         </div>
     </aside>
@@ -29,7 +38,6 @@
                 <a href="#home" class="nav-link">首页</a>
                 <a href="#team" class="nav-link">团队介绍</a>
                 <a href="#activities" class="nav-link">特色活动</a>
-                <!-- ========== (新) 这里是触发弹窗的按钮 ========== -->
                 <a href="#" id="open-modal-btn" class="nav-link">查看活动</a>
                 <a href="#join" class="nav-link">加入我们</a>
             </nav>
@@ -37,7 +45,7 @@
     </header>
 
     <main>
-        <!-- ... (您原来的 <main> 内容保持不变) ... -->
+        <!-- ... (您的 main 内容保持不变) ... -->
         <section id="home" class="hero">
             <div class="container text-center">
                 <h1>欢迎加入泉信ACM算法社</h1>
@@ -106,9 +114,6 @@
         </div>
     </footer>
     
-    <!-- ====================================================================== -->
-    <!-- ========== (新) 这里是为您添加的弹窗 (Modal) HTML 结构 ========== -->
-    <!-- ====================================================================== -->
     <div id="activities-modal-overlay">
         <div id="activities-modal-container" class="card">
             <div class="modal-header">
@@ -120,7 +125,6 @@
             </div>
         </div>
     </div>
-    <!-- ======================== 弹窗代码结束 ======================== -->
     
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
     <script src="script.js"></script>
