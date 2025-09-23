@@ -23,8 +23,7 @@ main { flex-grow: 1; }
 .text-center { text-align: center; }
 h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
 
-/* ================== 关键修改：调整标题间距 ================== */
-h2 { font-size: 2.5rem; margin-bottom: 1.5rem; } /* 减小标题下方的间距 */
+h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 
 section { padding: 5rem 0; }
 
@@ -81,7 +80,6 @@ section { padding: 5rem 0; }
 .join-section {
     background-color: white;
 }
-/* ================== 关键修改：调整各元素间距 ================== */
 .group-number {
     font-size: 1.5rem;
     font-weight: 600;
@@ -92,12 +90,12 @@ section { padding: 5rem 0; }
     background-color: #f0f2f5;
     padding: 0.8rem 1.5rem;
     border-radius: 12px;
-    margin-bottom: 1rem; /* 与下方副标题的间距 */
+    margin-bottom: 1rem;
 }
 .join-subtitle {
     font-size: 1.1rem;
     color: var(--light-text-color);
-    margin-bottom: 3rem; /* 与下方二维码的间距 */
+    margin-bottom: 3rem;
 }
 .join-us-content {
     display: flex;
@@ -111,7 +109,6 @@ section { padding: 5rem 0; }
     border-radius: 16px;
     box-shadow: var(--card-shadow);
 }
-/* ====================================================================== */
 
 /* 页脚 */
 .footer { background: var(--primary-gradient); color: rgba(255, 255, 255, 0.9); padding: 4rem 0; }
@@ -133,32 +130,78 @@ section { padding: 5rem 0; }
     .team-cards { grid-template-columns: 1fr; }
 }
 
-/* ====================================================================== */
-/* ========== (新) 这里是左侧“本周活动”侧边栏的样式 ========== */
-/* ====================================================================== */
+/* 左侧“本周活动”侧边栏的样式 */
 #weekly-activities-sidebar {
-    position: fixed; /* 固定定位，不随页面滚动 */
-    left: 20px; /* 距离浏览器窗口左侧20px */
-    top: 50%; /* 定位到页面垂直中心 */
-    transform: translateY(-50%); /* 通过transform精确垂直居中 */
-    width: 220px; /* 侧边栏宽度 */
-    z-index: 999; /* 层级，确保在大部分内容之上，但在顶部导航栏之下 */
-    
-    /* 让它像一个卡片，继承已有的动画效果 */
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    z-index: 999;
     opacity: 1;
-    transform: translateY(-50%) translateX(0); /* 覆盖卡片默认的向上移动动画 */
+    transform: translateY(-50%) translateX(0);
     transition: opacity 0.5s ease;
 }
 
 #weekly-activities-sidebar h3 {
-    margin-top: 0; /* 移除标题的上边距 */
+    margin-top: 0;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color); /* 添加一条分割线 */
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* 响应式设计：当屏幕宽度小于1400px时，隐藏侧边栏，避免遮挡主内容 */
 @media (max-width: 1400px) {
     #weekly-activities-sidebar {
         display: none;
     }
+}
+
+/* 弹窗 (Modal) 的样式 */
+#activities-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#activities-modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+#activities-modal-container {
+    width: 90%;
+    max-width: 500px;
+    opacity: 1;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+#activities-modal-overlay.visible #activities-modal-container {
+    transform: scale(1);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-header h3 {
+    margin: 0;
+}
+.modal-close-btn {
+    background: none; border: none;
+    font-size: 2.5rem; font-weight: bold;
+    color: #aaa; cursor: pointer;
+    line-height: 1; padding: 0;
+    transition: color 0.2s;
+}
+.modal-close-btn:hover {
+    color: #333;
+}
+.modal-content {
+    padding-top: 1.5rem;
 }
