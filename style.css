@@ -132,3 +132,33 @@ section { padding: 5rem 0; }
     .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
     .team-cards { grid-template-columns: 1fr; }
 }
+
+/* ====================================================================== */
+/* ========== (新) 这里是左侧“本周活动”侧边栏的样式 ========== */
+/* ====================================================================== */
+#weekly-activities-sidebar {
+    position: fixed; /* 固定定位，不随页面滚动 */
+    left: 20px; /* 距离浏览器窗口左侧20px */
+    top: 50%; /* 定位到页面垂直中心 */
+    transform: translateY(-50%); /* 通过transform精确垂直居中 */
+    width: 220px; /* 侧边栏宽度 */
+    z-index: 999; /* 层级，确保在大部分内容之上，但在顶部导航栏之下 */
+    
+    /* 让它像一个卡片，继承已有的动画效果 */
+    opacity: 1;
+    transform: translateY(-50%) translateX(0); /* 覆盖卡片默认的向上移动动画 */
+    transition: opacity 0.5s ease;
+}
+
+#weekly-activities-sidebar h3 {
+    margin-top: 0; /* 移除标题的上边距 */
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color); /* 添加一条分割线 */
+}
+
+/* 响应式设计：当屏幕宽度小于1400px时，隐藏侧边栏，避免遮挡主内容 */
+@media (max-width: 1400px) {
+    #weekly-activities-sidebar {
+        display: none;
+    }
+}
