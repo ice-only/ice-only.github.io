@@ -9,31 +9,24 @@
 </head>
 <body>
 
-    <!-- ====================================================================== -->
-    <!-- ========== (新) 这里是为您添加的左侧“本周活动”侧边栏 ========== -->
-    <!-- ====================================================================== -->
     <aside id="weekly-activities-sidebar" class="card">
         <h3>本周活动</h3>
         <div class="sidebar-content">
             <!-- 
                 ==============================================================
-                !!! 您可以在这里添加活动内容 !!!
-                例如，像这样添加一个列表：
+                !!! 您仍然只在这里添加或修改活动内容 !!!
+                弹窗的内容会自动从这里复制过去。
+                例如:
                 <ul>
                     <li>周一：算法分享会</li>
                     <li>周三：团队项目开发</li>
                     <li>周五：自由刷题交流</li>
                 </ul>
-                或者直接添加段落：
-                <p>本周将举行新生见面会，欢迎大家参加！</p>
                 ==============================================================
             -->
         </div>
     </aside>
-    <!-- ======================== 新侧边栏代码结束 ======================== -->
 
-
-    <!-- 头部导航栏 -->
     <header class="navbar">
         <div class="container">
             <a href="#" class="logo">
@@ -43,14 +36,15 @@
                 <a href="#home" class="nav-link">首页</a>
                 <a href="#team" class="nav-link">团队介绍</a>
                 <a href="#activities" class="nav-link">特色活动</a>
+                <!-- ========== (新) 这里是触发弹窗的按钮 ========== -->
+                <a href="#" id="open-modal-btn" class="nav-link">查看活动</a>
                 <a href="#join" class="nav-link">加入我们</a>
             </nav>
         </div>
     </header>
 
-    <!-- 主体内容 -->
     <main>
-        <!-- 欢迎部分 -->
+        <!-- ... (您原来的 <main> 内容保持不变) ... -->
         <section id="home" class="hero">
             <div class="container text-center">
                 <h1>欢迎加入泉信ACM算法社</h1>
@@ -72,8 +66,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 团队介绍 -->
         <section id="team" class="team-section">
             <div class="container text-center">
                 <h2>我们的团队</h2>
@@ -87,8 +79,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 特色活动 -->
         <section id="activities" class="activities-section">
             <div class="container text-center">
                 <h2>特色活动</h2>
@@ -100,12 +90,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- 加入我们 -->
         <section id="join" class="join-section">
             <div class="container text-center">
                 <h2>加入我们</h2>
-                <!-- ================== 关键修改：群号位置已调整 ================== -->
                 <p class="group-number">
                     <i class="fab fa-qq"></i> QQ群号：1042613770
                 </p>
@@ -113,19 +100,34 @@
                 <div class="join-us-content">
                     <img src="images/qq-group-qrcode.png" alt="ACM算法社纳新群二维码" class="qr-code-image">
                 </div>
-                <!-- ====================================================================== -->
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
     <footer class="footer">
+        <!-- ... (页脚内容保持不变) ... -->
         <div class="container footer-grid">
             <div class="footer-col"><h3>联系我们</h3><p><i class="fas fa-envelope"></i> 2360789930@qq.com</p><p><i class="fas fa-map-marker-alt"></i> 实训楼SA605</p></div>
             <div class="footer-col"><h3>关注我们</h3><p>获取最新活动通知和技术分享</p><div class="social-icons"><a href="#" aria-label="通知"><i class="fas fa-bell"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="帮助"><i class="fas fa-question-circle"></i></a></div></div>
             <div class="footer-col"><h3>活动时间</h3><p><i class="fas fa-calendar-alt"></i> 每周日早上9：00-12：00或12：00-17：00</p></div>
         </div>
     </footer>
+    
+    <!-- ====================================================================== -->
+    <!-- ========== (新) 这里是为您添加的弹窗 (Modal) HTML 结构 ========== -->
+    <!-- ====================================================================== -->
+    <div id="activities-modal-overlay">
+        <div id="activities-modal-container" class="card">
+            <div class="modal-header">
+                <h3>本周活动</h3>
+                <button id="modal-close-btn" class="modal-close-btn" aria-label="关闭">&times;</button>
+            </div>
+            <div id="modal-activities-content" class="modal-content">
+                <!-- 活动内容将由 JavaScript 自动填充到这里 -->
+            </div>
+        </div>
+    </div>
+    <!-- ======================== 弹窗代码结束 ======================== -->
     
     <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
     <script src="script.js"></script>
@@ -137,4 +139,201 @@
         loadlive2d("live2d", live2d_settings['model']['jsonPath']);
     </script>
 </body>
-</html>
+</html>```
+
+---
+
+### **第二步：更新您的 CSS 文件 (`style.css`)**
+
+您需要为弹窗的遮罩层、容器和关闭按钮添加样式。
+
+请将下面的**完整代码**替换您现有的 `style.css` 文件。我在文件末尾添加了所有弹窗需要的样式。
+
+#### **完整的 `style.css` 代码 (已更新)**
+
+```css
+/* ... (您原来所有的 CSS 样式保持不变) ... */
+:root {
+    --primary-gradient: linear-gradient(135deg, #f8a5c2, #b8c0ff);
+    --card-shadow: 0 10px 30px rgba(41, 51, 61, 0.08);
+    --background-color: #f9faff;
+    --text-color: #555;
+    --heading-color: #333;
+    --light-text-color: #777;
+    --border-color: #e9ecef;
+    scroll-behavior: smooth;
+}
+html { height: 100%; }
+body {
+    background-color: var(--background-color);
+    display: flex; flex-direction: column; min-height: 100%;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+    margin: 0; padding-top: 80px;
+    color: var(--text-color); line-height: 1.7; box-sizing: border-box;
+}
+main { flex-grow: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+h1, h2, h3 { color: var(--heading-color); font-weight: 600; }
+h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+section { padding: 5rem 0; }
+.live2d { position: fixed; right: 0; bottom: 0; width: 280px; height: 250px; z-index: 100; pointer-events: none; }
+.navbar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    height: 80px; padding: 0 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.navbar .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.navbar .logo { display: flex; align-items: center; text-decoration: none; color: #333; font-size: 1.2rem; font-weight: bold; }
+.navbar nav { display: flex; gap: 1rem; }
+.navbar .nav-link { color: #555; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 500; transition: all 0.3s; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: white; background: var(--primary-gradient); transform: translateY(-2px); }
+.hero { padding: 6rem 0; }
+.hero h1 { font-size: 3.2rem; margin-bottom: 1rem; color: #2c3e50; }
+.hero p { font-size: 1.1rem; max-width: 650px; margin: 0 auto 1.5rem; color: var(--light-text-color); }
+#hitokoto_text { font-style: italic; color: #95a5a6; min-height: 1.2em; margin-bottom: 3rem; }
+.stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.stat-item { text-align: center; padding: 1.5rem; flex: 1; min-width: 150px; }
+.stat-number { display: block; font-size: 3rem; font-weight: bold; color: #f8a5c2; }
+.stat-label { font-size: 1rem; color: var(--text-color); }
+.card {
+    background: white;
+    border-radius: 16px; box-shadow: var(--card-shadow); padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; transform: translateY(30px);
+}
+.card.visible { opacity: 1; transform: translateY(0); }
+.card:hover { transform: translateY(-10px) !important; box-shadow: 0 20px 40px rgba(41, 51, 61, 0.12); }
+.team-section { background-color: white; }
+.activities-section { background-color: transparent; }
+.team-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+.team-cards .card h3 { margin-bottom: 0.5rem; font-size: 1.4rem; color: #34495e; }
+.team-cards .card p { color: #8e44ad; font-weight: 500; }
+.activity-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.activity-cards .icon { font-size: 3rem; margin-bottom: 1.5rem; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.join-section { background-color: white; }
+.group-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f0f2f5;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+.join-subtitle {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    margin-bottom: 3rem;
+}
+.join-us-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.qr-code-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+}
+.footer { background: var(--primary-gradient); color: rgba(255, 255, 255, 0.9); padding: 4rem 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.footer-col { text-align: center; }
+.footer-col h3 { color: white; margin-bottom: 1.5rem; }
+.footer-col p { margin: 0.5rem 0; display: flex; align-items: center; gap: 10px; justify-content: center; }
+.social-icons { display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; }
+.social-icons a { font-size: 1.5rem; transition: transform 0.3s; color: white; }
+@media (max-width: 992px) { .team-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+    body { padding-top: 70px; } 
+    h2 { font-size: 2rem; margin-bottom: 1rem;}
+    .navbar .logo span { display: none; }
+    .navbar .container { justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .team-cards { grid-template-columns: 1fr; }
+}
+#weekly-activities-sidebar {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    z-index: 999;
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    transition: opacity 0.5s ease;
+}
+#weekly-activities-sidebar h3 {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+@media (max-width: 1400px) {
+    #weekly-activities-sidebar {
+        display: none;
+    }
+}
+
+/* ====================================================================== */
+/* ========== (新) 这里是弹窗 (Modal) 的样式 ========== */
+/* ====================================================================== */
+#activities-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
+    z-index: 2000; /* 确保在最顶层 */
+    display: none; /* 默认隐藏 */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 配合 transition 实现渐变 */
+    transition: opacity 0.3s ease;
+}
+#activities-modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+#activities-modal-container {
+    width: 90%;
+    max-width: 500px;
+    /* 继承 .card 样式，但需要覆盖动画相关的属性 */
+    opacity: 1;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+#activities-modal-overlay.visible #activities-modal-container {
+    transform: scale(1);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-header h3 {
+    margin: 0;
+}
+.modal-close-btn {
+    background: none; border: none;
+    font-size: 2.5rem; font-weight: bold;
+    color: #aaa; cursor: pointer;
+    line-height: 1; padding: 0;
+    transition: color 0.2s;
+}
+.modal-close-btn:hover {
+    color: #333;
+}
+.modal-content {
+    padding-top: 1.5rem;
+}
